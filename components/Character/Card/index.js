@@ -7,7 +7,7 @@ import { withRouter } from 'next/router'
 import { connect } from 'react-redux'
 
 // Actions
-import { updateCharacter } from 'pages/characterDetail/redux/actions'
+import { updateCharacter } from 'pages/character/redux/actions'
 
 // Styles
 import styles from './styles.scss'

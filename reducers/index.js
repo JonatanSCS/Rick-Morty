@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 import containerApp from 'containers/App/redux/reducer'
-import pageCharacterDetail from 'pages/characterDetail/redux/reducer'
+import pageCharacterDetail from 'pages/character/redux/reducer'
 
 /**
  * Combine all reducers from all components

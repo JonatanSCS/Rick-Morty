@@ -17,7 +17,7 @@ import { withRouter } from 'next/router'
 import { fetchCharacterById } from 'services/characters'
 
 // Actions
-import { updateCharacter } from 'pages/characterDetail/redux/actions'
+import { updateCharacter } from 'pages/character/redux/actions'
 
 // Styles
 import styles from './styles.scss'

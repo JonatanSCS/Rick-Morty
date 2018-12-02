@@ -2,8 +2,8 @@
 import { UPDATE_SEARCH } from './constants'
 
 export const initialState = {
-  search: 'Holi',
-  category: 'character'
+  search: '',
+  category: { value: 'character', label: 'Personaje' }
 }
 
 /**

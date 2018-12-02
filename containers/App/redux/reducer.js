@@ -1,5 +1,5 @@
 // Action
-import { UPDATE_SEARCH, UPDATE_CATEGORY } from './constants'
+import { UPDATE_FORM } from './constants'
 
 export const initialState = {
   search: '',
@@ -14,10 +14,8 @@ export const initialState = {
  */
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_SEARCH:
-      return { ...state, search: action.search }
-    case UPDATE_CATEGORY:
-      return { ...state, category: action.category }
+    case UPDATE_FORM:
+      return { ...state, [action.name]: action.value }
     default:
       return state
   }

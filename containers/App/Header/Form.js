@@ -12,7 +12,7 @@ import BaseComponent from 'utils/BaseComponent'
 import { withNamespaces } from 'react-i18next'
 
 // Actions
-import { updateSearch, updateCategory } from 'containers/App/redux/actions'
+import { updateForm } from 'containers/App/redux/actions'
 
 // Styles
 import styles from './styles.scss'
@@ -21,15 +21,16 @@ class Form extends BaseComponent {
   constructor(props) {
     super(props)
 
-    this._bind('_handleSearchChange', '_handleCategoryChange', '_handleSubmit')
+    this._bind('_handleChange', '_handleSubmit')
   }
 
-  _handleSearchChange(e) {
-    this.props.changeSearch(e.target.value)
-  }
-
-  _handleCategoryChange(category) {
-    this.props.changeCategory(category)
+  _handleChange(e) {
+    if (e.target) {
+      const { name, value } = e.target
+      this.props.changeForm(name, value)
+    } else {
+      this.props.changeForm('category', e)
+    }
   }
 
   _handleSubmit(e) {
@@ -51,12 +52,14 @@ class Form extends BaseComponent {
         <input
           className={styles.SearchBox}
           value={search}
-          onChange={this._handleSearchChange}
+          onChange={this._handleChange}
           placeholder={`${t('SearchPlaceholder')} ${label}`}
+          name="search"
         />
         <Select
+          name="category"
           value={category}
-          onChange={this._handleCategoryChange}
+          onChange={this._handleChange}
           options={options}
           className={styles.CategoryBox}
           isSearchable={false}
@@ -76,8 +79,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeSearch: search => dispatch(updateSearch(search)),
-    changeCategory: category => dispatch(updateCategory(category))
+    changeForm: (name, value) => dispatch(updateForm(name, value))
   }
 }
 

@@ -5,6 +5,9 @@ import React from 'react'
 import AppContainer from 'containers/App'
 import { withAlert } from 'react-alert'
 
+// Components
+import Characters from './components/Characters'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -15,7 +18,7 @@ class Home extends BaseComponent {
   render() {
     return (
       <AppContainer>
-        <section className={`${styles.Characters} ${styles.Section}`} />
+        <Characters />
         <section className={`${styles.Locations} ${styles.Section}`} />
         <section className={`${styles.Episodes} ${styles.Section}`} />
       </AppContainer>

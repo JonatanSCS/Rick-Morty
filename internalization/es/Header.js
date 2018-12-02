@@ -2,5 +2,6 @@ export const HEADER = {
   Character: 'Personaje',
   Location: 'Ubicación',
   Episode: 'Episodio',
-  SearchPlaceholder: 'Buscar por'
+  SearchPlaceholder: 'Buscar por',
+  CategoryPlaceholder: 'Categoria'
 }

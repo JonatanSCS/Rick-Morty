@@ -3,7 +3,7 @@ import { UPDATE_SEARCH, UPDATE_CATEGORY } from './constants'
 
 export const initialState = {
   search: '',
-  category: { value: 'character', label: '' }
+  category: null
 }
 
 /**

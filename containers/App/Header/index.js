@@ -18,23 +18,9 @@ class Header extends BaseComponent {
   constructor(props) {
     super(props)
 
-    const { t } = props
-    this.options = [
-      { value: 'character', label: t('Character') },
-      { value: 'location', label: t('Location') },
-      { value: 'episode', label: t('Episode') }
-    ]
-
     this._bind('_handleSearchChange', '_handleCategoryChange', '_handleSubmit')
   }
 
-  componentDidMount() {
-    const { t } = this.props
-    this.props.changeCategory({
-      value: 'character',
-      label: t('Character')
-    })
-  }
 
   _handleSearchChange(e) {
     this.props.changeSearch(e.target.value)
@@ -51,6 +37,13 @@ class Header extends BaseComponent {
 
   render(props) {
     const { t, search, category } = this.props
+    const options = [
+      { value: 'character', label: t('Character') },
+      { value: 'location', label: t('Location') },
+      { value: 'episode', label: t('Episode') }
+    ]
+    const label = category ? category.label : ''
+
     return (
       <div className={styles.Header}>
         <form className={styles.Form} onSubmit={this._handleSubmit}>
@@ -64,14 +57,15 @@ class Header extends BaseComponent {
             className={styles.SearchBox}
             value={search}
             onChange={this._handleSearchChange}
-            placeholder={`${t('SearchPlaceholder')} ${category.label}`}
+            placeholder={`${t('SearchPlaceholder')} ${label}`}
           />
           <Select
             value={category}
             onChange={this._handleCategoryChange}
-            options={this.options}
+            options={options}
             className={styles.CategoryBox}
             isSearchable={false}
+            placeholder={t('CategoryPlaceholder')}
           />
         </form>
         <div className={styles.List}>

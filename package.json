@@ -7,19 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "precommit": "pretty-quick --staged",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,less}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "keywords": [],
   "author": "",

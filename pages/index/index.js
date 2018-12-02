@@ -9,13 +9,15 @@ import { withAlert } from 'react-alert'
 import BaseComponent from 'utils/BaseComponent'
 
 // Styles
-import './styles.scss'
+import styles from './styles.scss'
 
 class Home extends BaseComponent {
   render() {
     return (
       <AppContainer>
-        <h1>My Home</h1>
+        <section className={`${styles.Characters} ${styles.Section}`} />
+        <section className={`${styles.Locations} ${styles.Section}`} />
+        <section className={`${styles.Episodes} ${styles.Section}`} />
       </AppContainer>
     )
   }

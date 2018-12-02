@@ -45,25 +45,25 @@ class Form extends BaseComponent {
       <form className={styles.Form} onSubmit={this._handleSubmit}>
         <input className={styles.Submit} type="submit" />
         <img
-          src="/static/logos/main.png"
           alt="Rick & Morty"
           className={styles.Logo}
+          src="/static/logos/main.png"
         />
         <input
           className={styles.SearchBox}
-          value={search}
+          name="search"
           onChange={this._handleChange}
           placeholder={`${t('SearchPlaceholder')} ${label}`}
-          name="search"
+          value={search}
         />
         <Select
-          name="category"
-          value={category}
-          onChange={this._handleChange}
-          options={options}
           className={styles.CategoryBox}
           isSearchable={false}
+          name="category"
+          onChange={this._handleChange}
+          options={options}
           placeholder={t('CategoryPlaceholder')}
+          value={category}
         />
       </form>
     )

@@ -17,7 +17,6 @@ import { fetchEpisodesByPage } from 'services/episodes'
 
 class LocationPage extends BaseComponent {
   _renderEpisode(episode) {
-    console.log(episode)
     const { id, name } = episode
     return <EpisodeCard key={id + name} {...episode} />
   }

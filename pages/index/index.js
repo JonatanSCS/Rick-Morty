@@ -1,3 +1,6 @@
+// Dependencies
+import React from 'react'
+
 // Containers
 import AppContainer from 'containers/App'
 import { withAlert } from 'react-alert'

@@ -1,3 +1,6 @@
+// Dependencies
+import React from 'react'
+
 // Components
 import Header from './Header'
 

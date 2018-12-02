@@ -1,27 +1,33 @@
+// Dependencies
 import React from 'react'
-import App, { Container } from 'next/app'
-import { render } from 'react-dom'
-import { Provider, connect } from 'react-redux'
-import { Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
-import 'styles/normalize.scss'
-import withRedux from 'next-redux-wrapper'
-
-import {applyMiddleware, createStore} from 'redux'
+import { createStore } from 'redux'
 import detectBrowserLanguage from 'detect-browser-language'
 
+// Components
+import App, { Container } from 'next/app'
+import { Provider } from 'react-redux'
+import { Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+
+// Utils
+import withRedux from 'next-redux-wrapper'
+
+// Styles
+import 'styles/normalize.scss'
+
+// Redux
 import reducer from 'reducers'
 
 // Intenalization
 import 'i18n'
 import i18next from 'i18n'
 
-const makeStore = (initialState, options) => {
+const makeStore = initialState => {
   return createStore(reducer(), initialState)
 }
 
 class RickMortyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -35,7 +41,7 @@ class RickMortyApp extends App {
     i18next.changeLanguage(detectBrowserLanguage())
   }
 
-  render () {
+  render() {
     const { Component, pageProps, store } = this.props
     const options = {
       position: 'bottom center',
@@ -55,6 +61,5 @@ class RickMortyApp extends App {
     )
   }
 }
-
 
 export default withRedux(makeStore)(RickMortyApp)

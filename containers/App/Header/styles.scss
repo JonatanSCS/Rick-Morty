@@ -1,0 +1,55 @@
+@import 'styles/variables';
+
+.Header {
+  background: $background-secondary;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.Logo {
+  width: 10rem;
+  margin-right: 2rem;
+}
+
+.Form {
+  display: flex;
+  align-items: flex-end;
+}
+
+.SearchBox {
+  border: 0;
+  border-bottom: 1px solid $focus-primary;
+  background: transparent;
+  height: 1.5rem;
+  margin-right: 2rem;
+  width: 16rem;
+}
+
+.CategoryBox {
+  width: 10rem;
+  div {
+    border: 0;
+  }
+}
+
+.Submit {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.List {
+  ul {
+    display: flex;
+    li {
+      padding: 1rem 1rem 0 1rem;
+      color: $dark-text;
+      cursor: pointer;
+      &:hover {
+        color: $very-dark-text;
+      }
+    }
+  }
+}

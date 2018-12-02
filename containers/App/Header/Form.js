@@ -3,6 +3,7 @@ import React from 'react'
 
 // Components
 import Select from 'react-select'
+import Link from 'next/link'
 
 // Utils
 import { connect } from 'react-redux'
@@ -44,11 +45,13 @@ class Form extends BaseComponent {
     return (
       <form className={styles.Form} onSubmit={this._handleSubmit}>
         <input className={styles.Submit} type="submit" />
-        <img
-          alt="Rick & Morty"
-          className={styles.Logo}
-          src="/static/logos/main.png"
-        />
+        <Link href="/">
+          <img
+            alt="Rick & Morty"
+            className={styles.Logo}
+            src="/static/logos/main.png"
+          />
+        </Link>
         <input
           className={styles.SearchBox}
           name="search"

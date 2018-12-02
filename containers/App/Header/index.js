@@ -3,6 +3,7 @@ import React from 'react'
 
 // Components
 import Form from './Form'
+import Link from 'next/link'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -15,15 +16,20 @@ import styles from './styles.scss'
 
 class Header extends BaseComponent {
   _renderLink(link) {
-    return <li key={`${link.value}-${link.label}`}>{link.label}</li>
+    const { value, label, route } = link
+    return (
+      <Link href={route}>
+        <li key={`${value}-${label}`}>{label}</li>
+      </Link>
+    )
   }
 
   render() {
     const { t } = this.props
     const options = [
-      { value: 'character', label: t('Character') },
-      { value: 'location', label: t('Location') },
-      { value: 'episode', label: t('Episode') }
+      { value: 'character', label: t('Character'), route: 'characters' },
+      { value: 'location', label: t('Location'), route: 'characters' },
+      { value: 'episode', label: t('Episode'), route: 'characters' }
     ]
 
     return (

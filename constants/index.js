@@ -6,6 +6,7 @@ export const CHARACTER_URL = `${BASE_API_URL}character/`
 
 export const CHARACTERS_PAGINATION = page => `${CHARACTER_URL}?page=${page}`
 export const CHARACTERS_MULTIPLE = numbers => `${CHARACTER_URL}${numbers}`
+export const CHARACTER_ID = id => `${CHARACTER_URL}${id}`
 
 // Locations URLs
 export const LOCATION_URL = `${BASE_API_URL}location/`

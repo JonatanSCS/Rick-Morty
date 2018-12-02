@@ -27,9 +27,9 @@ class Header extends BaseComponent {
   render() {
     const { t } = this.props
     const options = [
-      { value: 'character', label: t('Character'), route: 'characters' },
-      { value: 'location', label: t('Location'), route: 'locations' },
-      { value: 'episode', label: t('Episode'), route: 'episodes' }
+      { value: 'character', label: t('Character'), route: '/characters' },
+      { value: 'location', label: t('Location'), route: '/locations' },
+      { value: 'episode', label: t('Episode'), route: '/episodes' }
     ]
 
     return (

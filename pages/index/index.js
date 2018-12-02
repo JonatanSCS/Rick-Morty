@@ -36,7 +36,6 @@ class Home extends BaseComponent {
 
   componentDidMount() {
     fetchGeneralItems(12).then(data => {
-      console.log(data)
       this.setState({
         ...data,
         isLoading: false

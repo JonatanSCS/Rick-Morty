@@ -18,8 +18,8 @@ class Header extends BaseComponent {
   _renderLink(link) {
     const { value, label, route } = link
     return (
-      <Link href={route}>
-        <li key={`${value}-${label}`}>{label}</li>
+      <Link key={`${value}-${label}`} href={route}>
+        <li>{label}</li>
       </Link>
     )
   }

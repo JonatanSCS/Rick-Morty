@@ -1,5 +1,5 @@
 // Containers
-import HomeContainer from 'containers/Home'
+import AppContainer from 'containers/App'
 import { withAlert } from 'react-alert'
 
 // Utils
@@ -9,16 +9,11 @@ import BaseComponent from 'utils/BaseComponent'
 import './styles.scss'
 
 class Home extends BaseComponent {
-  componentDidMount() {
-    this.props.alert.success('Init')
-  }
-
-
   render() {
     return (
-      <HomeContainer>
+      <AppContainer>
         <h1>My Home</h1>
-      </HomeContainer>
+      </AppContainer>
     )
   }
 }

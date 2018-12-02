@@ -1,0 +1,21 @@
+@import 'styles/variables';
+
+.Header {
+  background: $background-secondary;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.Logo {
+  width: 10rem;
+  margin-right: 2rem;
+}
+
+.SearchBox {
+  border: 0;
+  border-bottom: 1px solid $focus-primary;
+  background: transparent;
+  height: 1.5rem;
+  width: 16rem;
+}

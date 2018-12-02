@@ -1,2 +1,6 @@
 // Dependencies
-// import fetch from 'isomorphic-unfetch'
+import axios from 'axios'
+
+export const prueba = () => {
+  return axios('https://rickandmortyapi.com/api/character/1')
+}

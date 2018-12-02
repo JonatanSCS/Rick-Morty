@@ -8,8 +8,13 @@ import 'styles/normalize.scss'
 import withRedux from 'next-redux-wrapper'
 
 import {applyMiddleware, createStore} from 'redux'
+import detectBrowserLanguage from 'detect-browser-language'
 
 import reducer from 'reducers'
+
+// Intenalization
+import 'i18n'
+import i18next from 'i18n'
 
 const makeStore = (initialState, options) => {
   return createStore(reducer(), initialState)
@@ -24,6 +29,10 @@ class RickMortyApp extends App {
     }
 
     return { pageProps }
+  }
+
+  componentDidMount() {
+    i18next.changeLanguage(detectBrowserLanguage())
   }
 
   render () {

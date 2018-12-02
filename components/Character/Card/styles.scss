@@ -5,8 +5,12 @@
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
+  background: white;
   img {
     width: 10rem;
     height: 10rem;
+  }
+  p {
+    padding: 1rem;
   }
 }

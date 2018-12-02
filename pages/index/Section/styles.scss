@@ -1,0 +1,28 @@
+.Section {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &:nth-child(1) {
+    background-image: url('/static/wall/head.png');
+  }
+
+  &:nth-child(2) {
+    background-image: url('/static/wall/shadow.png');
+  }
+
+  &:nth-child(3) {
+    background-image: url('/static/wall/sun.jpg');
+  }
+}
+
+.Content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

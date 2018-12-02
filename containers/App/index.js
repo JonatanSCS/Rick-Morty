@@ -5,11 +5,11 @@ import React from 'react'
 import Header from './Header'
 
 // Styles
-import './styles.scss'
+import styles from './styles.scss'
 
 export default props => (
-  <div id="HomeContainer">
+  <div className={styles.Container}>
     <Header />
-    {props.children}
+    <div className={styles.Content}>{props.children}</div>
   </div>
 )

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import containerApp from 'containers/App/redux/reducer'
+import pageCharacterDetail from 'pages/characterDetail/redux/reducer'
 
 /**
  * Combine all reducers from all components
@@ -9,6 +10,7 @@ import containerApp from 'containers/App/redux/reducer'
  */
 export default function createReducer() {
   return combineReducers({
-    containerApp
+    containerApp,
+    pageCharacterDetail
   })
 }

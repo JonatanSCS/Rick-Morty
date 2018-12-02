@@ -1,0 +1,35 @@
+@import 'styles/variables.scss';
+
+.Content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  .Main {
+    margin-right: 2rem;
+    img {
+      width: 15rem;
+      border-radius: 4px;
+    }
+  }
+  .Data {
+    width: 20rem;
+    h2 {
+      margin-bottom: 1rem;
+    }
+    p {
+      color: $dark-text;
+      span {
+        color: $medium-text;
+      }
+    }
+  }
+}
+
+.Loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 30rem;
+  align-items: center;
+}

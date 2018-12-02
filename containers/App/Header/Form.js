@@ -2,7 +2,6 @@
 import React from 'react'
 
 // Components
-import Select from 'react-select'
 import Link from 'next/link'
 
 // Utils
@@ -40,8 +39,6 @@ class Form extends BaseComponent {
   }
 
   render() {
-    const { t, search, category, options } = this.props
-    const label = category ? category.label : ''
     return (
       <form className={styles.Form} onSubmit={this._handleSubmit}>
         <input className={styles.Submit} type="submit" />
@@ -52,22 +49,6 @@ class Form extends BaseComponent {
             src="/static/logos/main.png"
           />
         </Link>
-        <input
-          className={styles.SearchBox}
-          name="search"
-          onChange={this._handleChange}
-          placeholder={`${t('SearchPlaceholder')} ${label}`}
-          value={search}
-        />
-        <Select
-          className={styles.CategoryBox}
-          isSearchable={false}
-          name="category"
-          onChange={this._handleChange}
-          options={options}
-          placeholder={t('CategoryPlaceholder')}
-          value={category}
-        />
       </form>
     )
   }

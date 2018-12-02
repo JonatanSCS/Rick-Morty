@@ -1,0 +1,14 @@
+@import 'styles/variables.scss';
+
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Button {
+  display: block;
+  border: 0;
+  background: $background-primary;
+  padding: .5rem 1rem;
+  border-radius: 100px;
+}

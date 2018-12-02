@@ -26,7 +26,7 @@ class CharacterPage extends BaseComponent {
         <InfinitList
           service={fetchCharactersByPage}
           label="Characters"
-          height="900px"
+          height="950px"
           renderItem={this._renderCharacter}
         />
       </AppContainer>

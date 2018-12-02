@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
+import { withRouter } from 'next/router'
 
 // Styles
 import styles from './styles.scss'
@@ -68,4 +69,4 @@ class InfinitList extends BaseComponent {
   }
 }
 
-export default InfinitList
+export default withRouter(InfinitList)

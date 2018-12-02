@@ -6,7 +6,6 @@ import AppContainer from 'containers/App'
 
 // Components
 import { ClipLoader } from 'react-spinners'
-import { withAlert } from 'react-alert'
 import Others from './Others'
 
 // Utils
@@ -24,27 +23,22 @@ import { updateCharacter } from 'pages/characterDetail/redux/actions'
 import styles from './styles.scss'
 
 class CharacterPage extends BaseComponent {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      isLoading: true
+      isLoading: !props.character.id
     }
   }
 
   componentDidMount() {
     const id = this.props.router.query.id
-    fetchCharacterById(id).then(({ data }) => {
-      this.props.setCharacter(data)
-      if (data.status === 'Alive') {
-        this.props.alert.success('Is Alive')
-      } else if (data.status === 'Dead') {
-        this.props.alert.error('Is Dead')
-      } else {
-        this.props.alert.show('No Data')
-      }
-      this.setState({ isLoading: false })
-    })
+    if (!this.props.character.id) {
+      fetchCharacterById(id).then(({ data }) => {
+        this.props.setCharacter(data)
+        this.setState({ isLoading: false })
+      })
+    }
   }
 
   _renderContent() {
@@ -96,4 +90,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(withAlert(CharacterPage)))
+)(withRouter(CharacterPage))

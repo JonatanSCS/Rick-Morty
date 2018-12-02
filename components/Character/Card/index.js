@@ -3,25 +3,46 @@ import React from 'react'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
+import { withRouter } from 'next/router'
+import { connect } from 'react-redux'
 
-// Components
-import Link from 'next/link'
+// Actions
+import { updateCharacter } from 'pages/characterDetail/redux/actions'
 
 // Styles
 import styles from './styles.scss'
 
 class Card extends BaseComponent {
+  constructor() {
+    super()
+
+    this._bind('_handleClick')
+  }
+
+  _handleClick() {
+    const { router, id } = this.props
+    this.props.setCharacter(this.props)
+    router.push(`/character?id=${id}`)
+  }
+
   render() {
-    const { name, image, id } = this.props
+    const { name, image } = this.props
     return (
-      <Link href={`/characters/${id}`}>
-        <div className={styles.Card}>
-          <img src={image} alt={name} />
-          <p>{name}</p>
-        </div>
-      </Link>
+      <div className={styles.Card} onClick={this._handleClick}>
+        <img src={image} alt={name} />
+        <p>{name}</p>
+      </div>
     )
   }
 }
 
-export default Card
+const mapDispatchToProps = dispatch => {
+  return {
+    setCharacter: character => dispatch(updateCharacter(character))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(Card))

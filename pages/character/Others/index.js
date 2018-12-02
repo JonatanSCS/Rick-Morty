@@ -20,9 +20,15 @@ export default class Other extends BaseComponent {
     this.state = {
       characters: []
     }
+
+    this._bind('_fetchRandomCharacters')
   }
 
   componentDidMount() {
+    this._fetchRandomCharacters()
+  }
+
+  _fetchRandomCharacters() {
     fetchMultipleCharacters(6).then(({ data }) => {
       this.setState({
         characters: data
@@ -31,14 +37,18 @@ export default class Other extends BaseComponent {
   }
 
   _renderCharacter(character) {
-    console.log(character)
     return <CharacterCard key={character.id + character.name} {...character} />
   }
 
   render() {
     return (
       <div className={styles.List}>
-        {this.state.characters.map(this._renderCharacter)}
+        <div className={styles.Content}>
+          {this.state.characters.map(this._renderCharacter)}
+        </div>
+        <button className={styles.Button} onClick={this._fetchRandomCharacters}>
+          Others
+        </button>
       </div>
     )
   }

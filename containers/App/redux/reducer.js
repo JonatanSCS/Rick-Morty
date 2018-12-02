@@ -1,9 +1,9 @@
 // Action
-import { UPDATE_SEARCH } from './constants'
+import { UPDATE_SEARCH, UPDATE_CATEGORY } from './constants'
 
 export const initialState = {
   search: '',
-  category: { value: 'character', label: 'Personaje' }
+  category: { value: 'character', label: '' }
 }
 
 /**
@@ -17,6 +17,8 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_SEARCH:
       return { ...state, search: action.search }
+    case UPDATE_CATEGORY:
+      return { ...state, category: action.category }
     default:
       return state
   }

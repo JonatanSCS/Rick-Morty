@@ -3,62 +3,88 @@ import Select from 'react-select'
 
 // Utils
 import { connect } from 'react-redux'
+import BaseComponent from 'utils/BaseComponent'
 
 // Styles
 import styles from './styles.scss'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Actions
-import { updateSearch } from 'containers/App/redux/actions'
+import { updateSearch, updateCategory } from 'containers/App/redux/actions'
 
-const Header = props => {
-  const _handleSearchChange = (e) => {
-    props.changeSearch(e.target.value)
+class Header extends BaseComponent {
+  constructor(props) {
+    super(props)
+
+    const { t } = props
+    this.options = [
+      { value: 'character', label: t('Character') },
+      { value: 'location', label: t('Location') },
+      { value: 'episode', label: t('Episode') }
+    ]
+
+    this._bind('_handleSearchChange', '_handleCategoryChange', '_handleSubmit')
   }
 
-  const _handleCategoryChange = category => {
-    console.log(category)
+  componentDidMount() {
+    const { t } = this.props
+    this.props.changeCategory({
+      value: 'character',
+      label: t('Character')
+    })
   }
 
+  _handleSearchChange(e) {
+    this.props.changeSearch(e.target.value)
+  }
 
-  const options = [
-    { value: 'character', label: 'Personaje' },
-    { value: 'location', label: 'Ubicación' },
-    { value: 'episode', label: 'Episodio' }
-  ]
+  _handleCategoryChange(category) {
+    this.props.changeCategory(category)
+  }
 
-  return (
-    <div className={styles.Header}>
-      <div className={styles.Form}>
-        <img
-          src="/static/logos/main.png"
-          alt="Rick & Morty"
-          className={styles.Logo}
-        />
-        <input
-          className={styles.SearchBox}
-          value={props.search}
-          onChange={_handleSearchChange}
-          placeholder={`Search by ${props.category.label}`}
-        />
-        <Select
-          value={props.category}
-          onChange={_handleCategoryChange}
-          options={options}
-          className={styles.CategoryBox}
-          isSearchable={false}
-        />
+  _handleSubmit(e) {
+    e.preventDefault()
+    console.log(this.props)
+  }
+
+  render(props) {
+    const { t, search, category } = this.props
+    return (
+      <div className={styles.Header}>
+        <form className={styles.Form} onSubmit={this._handleSubmit}>
+          <input className={styles.Submit} type="submit" />
+          <img
+            src="/static/logos/main.png"
+            alt="Rick & Morty"
+            className={styles.Logo}
+          />
+          <input
+            className={styles.SearchBox}
+            value={search}
+            onChange={this._handleSearchChange}
+            placeholder={`${t('SearchPlaceholder')} ${category.label}`}
+          />
+          <Select
+            value={category}
+            onChange={this._handleCategoryChange}
+            options={this.options}
+            className={styles.CategoryBox}
+            isSearchable={false}
+          />
+        </form>
+        <div className={styles.List}>
+          <ul>
+            <li>{t('Character')}</li>
+            <li>{t('Location')}</li>
+            <li>{t('Episode')}</li>
+          </ul>
+        </div>
       </div>
-      <div className={styles.List}>
-        <ul>
-          <li>Personajes</li>
-          <li>Ubicación</li>
-          <li>Episodio</li>
-        </ul>
-      </div>
-    </div>
-  )
+    )
+  }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -69,8 +95,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeSearch: search => dispatch(updateSearch(search))
+    changeSearch: search => dispatch(updateSearch(search)),
+    changeCategory: category => dispatch(updateCategory(category))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+)

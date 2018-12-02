@@ -7,6 +7,10 @@
   display: flex;
   .Main {
     margin-right: 2rem;
+    img {
+      width: 15rem;
+      border-radius: 4px;
+    }
   }
   .Data {
     width: 20rem;

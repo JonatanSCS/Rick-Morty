@@ -14,7 +14,6 @@ const resources = {
   }
 }
 
-
 i18n.use(reactI18nextModule).init({
   resources,
   lng: 'es',

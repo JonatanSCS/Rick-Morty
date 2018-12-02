@@ -1,21 +1,16 @@
-h1, a {
-  font-family: "Arial";
+.Section {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 35rem;
+  width: 100%;
 }
 
-ul {
-  padding: 0;
+
+.Locations {
+  background-image: url('/static/wall/shadow.png');
 }
 
-li {
-  list-style: none;
-  margin: 5px 0;
-}
-
-a {
-  text-decoration: none;
-  color: blue;
-}
-
-a:hover {
-  opacity: 0.6;
+.Episodes {
+  background-image: url('/static/wall/sun.jpg');
 }

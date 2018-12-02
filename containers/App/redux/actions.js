@@ -1,17 +1,10 @@
 // Constants
-import { UPDATE_SEARCH, UPDATE_CATEGORY } from './constants'
+import { UPDATE_FORM } from './constants'
 
-export const updateSearch = search => {
+export const updateForm = (name, value) => {
   return {
-    type: UPDATE_SEARCH,
-    search
-  }
-}
-
-
-export const updateCategory = category => {
-  return {
-    type: UPDATE_CATEGORY,
-    category
+    type: UPDATE_FORM,
+    name,
+    value
   }
 }

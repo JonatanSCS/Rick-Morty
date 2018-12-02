@@ -1,102 +1,46 @@
+// Dependencies
+import React from 'react'
+
 // Components
-import Select from 'react-select'
+import Form from './Form'
+import Link from 'next/link'
 
 // Utils
-import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
-
-// Styles
-import styles from './styles.scss'
 
 // Internalization
 import { withNamespaces } from 'react-i18next'
 
-// Actions
-import { updateSearch, updateCategory } from 'containers/App/redux/actions'
+// Styles
+import styles from './styles.scss'
 
 class Header extends BaseComponent {
-  constructor(props) {
-    super(props)
-
-    this._bind('_handleSearchChange', '_handleCategoryChange', '_handleSubmit')
+  _renderLink(link) {
+    const { value, label, route } = link
+    return (
+      <Link key={`${value}-${label}`} href={route}>
+        <li>{label}</li>
+      </Link>
+    )
   }
 
-
-  _handleSearchChange(e) {
-    this.props.changeSearch(e.target.value)
-  }
-
-  _handleCategoryChange(category) {
-    this.props.changeCategory(category)
-  }
-
-  _handleSubmit(e) {
-    e.preventDefault()
-    console.log(this.props)
-  }
-
-  render(props) {
-    const { t, search, category } = this.props
+  render() {
+    const { t } = this.props
     const options = [
-      { value: 'character', label: t('Character') },
-      { value: 'location', label: t('Location') },
-      { value: 'episode', label: t('Episode') }
+      { value: 'character', label: t('Character'), route: 'characters' },
+      { value: 'location', label: t('Location'), route: 'locations' },
+      { value: 'episode', label: t('Episode'), route: 'episodes' }
     ]
-    const label = category ? category.label : ''
 
     return (
       <div className={styles.Header}>
-        <form className={styles.Form} onSubmit={this._handleSubmit}>
-          <input className={styles.Submit} type="submit" />
-          <img
-            src="/static/logos/main.png"
-            alt="Rick & Morty"
-            className={styles.Logo}
-          />
-          <input
-            className={styles.SearchBox}
-            value={search}
-            onChange={this._handleSearchChange}
-            placeholder={`${t('SearchPlaceholder')} ${label}`}
-          />
-          <Select
-            value={category}
-            onChange={this._handleCategoryChange}
-            options={options}
-            className={styles.CategoryBox}
-            isSearchable={false}
-            placeholder={t('CategoryPlaceholder')}
-          />
-        </form>
+        <Form options={options} />
         <div className={styles.List}>
-          <ul>
-            <li>{t('Character')}</li>
-            <li>{t('Location')}</li>
-            <li>{t('Episode')}</li>
-          </ul>
+          <ul>{options.map(this._renderLink)}</ul>
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    search: state.containerApp.search,
-    category: state.containerApp.category,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeSearch: search => dispatch(updateSearch(search)),
-    changeCategory: category => dispatch(updateCategory(category))
-  }
-}
-
-export default withNamespaces()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Header)
-)
+export default withNamespaces()(Header)

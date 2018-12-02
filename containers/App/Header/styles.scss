@@ -1,52 +1,61 @@
 @import 'styles/variables';
 
 .Header {
+  align-items: center;
   background: $background-secondary;
-  padding: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
   display: flex;
-  align-items: flex-end;
+  height: 3.25rem;
   justify-content: space-between;
+  padding: 0;
+  position: fixed;
+  width: 100%;
 }
 
 .Logo {
-  width: 10rem;
+  cursor: pointer;
   margin-right: 2rem;
+  width: 5rem;
 }
 
 .Form {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .SearchBox {
-  border: 0;
-  border-bottom: 1px solid $focus-primary;
   background: transparent;
-  height: 1.5rem;
+  border: 0;
   margin-right: 2rem;
-  width: 16rem;
+  width: 14rem;
+  &:focus {
+    border-bottom: 1px solid $focus-primary;
+    padding-bottom: .3rem;
+  }
 }
 
 .CategoryBox {
-  width: 10rem;
+  width: 8rem;
   div {
     border: 0;
+    outline: none;
   }
 }
 
 .Submit {
+  height: 0;
   visibility: hidden;
   width: 0;
-  height: 0;
 }
 
 .List {
   ul {
     display: flex;
     li {
-      padding: 1rem 1rem 0 1rem;
       color: $dark-text;
       cursor: pointer;
+      margin: 0;
+      padding: 0 1rem;
       &:hover {
         color: $very-dark-text;
       }

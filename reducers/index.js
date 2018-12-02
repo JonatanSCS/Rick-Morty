@@ -7,7 +7,7 @@ import containerApp from 'containers/App/redux/reducer'
  * @param {object} history of reducer
  * @return { combineReducers } from 'redux'
  */
-export default function createReducer(history) {
+export default function createReducer() {
   return combineReducers({
     containerApp
   })

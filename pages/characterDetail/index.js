@@ -6,6 +6,8 @@ import AppContainer from 'containers/App'
 
 // Components
 import { ClipLoader } from 'react-spinners'
+import { withAlert } from 'react-alert'
+import Others from './Others'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -34,6 +36,13 @@ class CharacterPage extends BaseComponent {
     const id = this.props.router.query.id
     fetchCharacterById(id).then(({ data }) => {
       this.props.setCharacter(data)
+      if (data.status === 'Alive') {
+        this.props.alert.success('Is Alive')
+      } else if (data.status === 'Dead') {
+        this.props.alert.error('Is Dead')
+      } else {
+        this.props.alert.show('No Data')
+      }
       this.setState({ isLoading: false })
     })
   }
@@ -62,6 +71,7 @@ class CharacterPage extends BaseComponent {
             Género: <span>{gender}</span>
           </p>
         </div>
+        <Others />
       </div>
     )
   }
@@ -86,4 +96,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(CharacterPage))
+)(withRouter(withAlert(CharacterPage)))

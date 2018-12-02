@@ -29,7 +29,7 @@ class Header extends BaseComponent {
     const options = [
       { value: 'character', label: t('Character'), route: 'characters' },
       { value: 'location', label: t('Location'), route: 'locations' },
-      { value: 'episode', label: t('Episode'), route: 'characters' }
+      { value: 'episode', label: t('Episode'), route: 'episodes' }
     ]
 
     return (

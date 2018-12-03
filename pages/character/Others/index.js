@@ -7,13 +7,16 @@ import BaseComponent from 'utils/BaseComponent'
 // Components
 import CharacterCard from 'components/Character/Card'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Services
 import { fetchMultipleCharacters } from 'services/characters'
 
 // Styles
 import styles from './styles.scss'
 
-export default class Other extends BaseComponent {
+class Other extends BaseComponent {
   constructor() {
     super()
 
@@ -41,15 +44,18 @@ export default class Other extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className={styles.List}>
         <div className={styles.Content}>
           {this.state.characters.map(this._renderCharacter)}
         </div>
         <button className={styles.Button} onClick={this._fetchRandomCharacters}>
-          Others
+          {t('Others')}
         </button>
       </div>
     )
   }
 }
+
+export default withNamespaces()(Other)

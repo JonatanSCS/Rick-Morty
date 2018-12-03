@@ -13,6 +13,9 @@ import BaseComponent from 'utils/BaseComponent'
 import { connect } from 'react-redux'
 import { withRouter } from 'next/router'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Services
 import { fetchCharacterById } from 'services/characters'
 
@@ -43,6 +46,7 @@ class CharacterPage extends BaseComponent {
 
   _renderContent() {
     const { name, status, species, gender, image } = this.props.character
+    const { t } = this.props
     return this.state.isLoading ? (
       <div className={styles.Loader}>
         <ClipLoader color="#bee5fd" />
@@ -54,15 +58,15 @@ class CharacterPage extends BaseComponent {
           <h1>{name}</h1>
         </div>
         <div className={styles.Data}>
-          <h2>Datos</h2>
+          <h2>{t('Data')}</h2>
           <p>
-            Status: <span>{status}</span>
+            {t('Status')}: <span>{status}</span>
           </p>
           <p>
-            Especie: <span>{species}</span>
+            {t('Species')}: <span>{species}</span>
           </p>
           <p>
-            Género: <span>{gender}</span>
+            {t('Gender')}: <span>{gender}</span>
           </p>
         </div>
         <Others />
@@ -87,7 +91,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(CharacterPage))
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(withRouter(CharacterPage))
+)

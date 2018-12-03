@@ -9,6 +9,9 @@ import { withAlert } from 'react-alert'
 import InfinitList from 'components/Lists/Infinity'
 import CharacterCard from 'components/Character/Card'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -21,11 +24,12 @@ class CharacterPage extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <AppContainer>
         <InfinitList
           service={fetchCharactersByPage}
-          label="Characters"
+          label={t('Characters')}
           height="950px"
           renderItem={this._renderCharacter}
         />
@@ -34,4 +38,4 @@ class CharacterPage extends BaseComponent {
   }
 }
 
-export default withAlert(CharacterPage)
+export default withNamespaces()(withAlert(CharacterPage))

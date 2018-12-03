@@ -9,6 +9,9 @@ import { withAlert } from 'react-alert'
 import InfinitList from 'components/Lists/Infinity'
 import LocationCard from 'components/Location/Card'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -21,11 +24,12 @@ class LocationPage extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <AppContainer>
         <InfinitList
           service={fetchLocationsByPage}
-          label="Locations"
+          label={t('Locations')}
           height="900px"
           renderItem={this._renderLocation}
         />
@@ -34,4 +38,4 @@ class LocationPage extends BaseComponent {
   }
 }
 
-export default withAlert(LocationPage)
+export default withNamespaces()(withAlert(LocationPage))

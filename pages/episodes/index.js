@@ -9,24 +9,28 @@ import { withAlert } from 'react-alert'
 import InfinitList from 'components/Lists/Infinity'
 import EpisodeCard from 'components/Episode/Card'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
 // Services
 import { fetchEpisodesByPage } from 'services/episodes'
 
-class LocationPage extends BaseComponent {
+class EpisodesPage extends BaseComponent {
   _renderEpisode(episode) {
     const { id, name } = episode
     return <EpisodeCard key={id + name} {...episode} />
   }
 
   render() {
+    const { t } = this.props
     return (
       <AppContainer>
         <InfinitList
           service={fetchEpisodesByPage}
-          label="Episodes"
+          label={t('Episodes')}
           height="900px"
           renderItem={this._renderEpisode}
         />
@@ -35,4 +39,4 @@ class LocationPage extends BaseComponent {
   }
 }
 
-export default withAlert(LocationPage)
+export default withNamespaces()(withAlert(EpisodesPage))

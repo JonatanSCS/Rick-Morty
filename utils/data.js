@@ -11,7 +11,7 @@ export const getRandomNumbers = (items, max, min) => {
   return _numbers
 }
 
-export const setUrlParmsByObject = params => {
+export const setUrlParmsByObject = (params = {}) => {
   let query = '&'
 
   for (let key in params) {

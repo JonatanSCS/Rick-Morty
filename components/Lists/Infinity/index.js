@@ -40,7 +40,7 @@ class InfinitList extends BaseComponent {
   }
 
   render() {
-    const { page, max, items } = this.props
+    const { page, max, items, filters } = this.props
     return (
       <div
         className={styles.Page}
@@ -50,7 +50,7 @@ class InfinitList extends BaseComponent {
         }}
       >
         <h1>{this.props.label}</h1>
-        <Filters filters={this.props.filters} />
+        <Filters filters={filters} />
         <InfiniteScroll
           pageStart={1}
           className={styles.List}

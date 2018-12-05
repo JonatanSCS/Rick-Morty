@@ -5,10 +5,10 @@ import axios from 'axios'
 import { LOCATION_PAGINATION, LOCATION_MULTIPLE } from 'constants/index'
 
 // Utils
-import { getRandomNumbers } from 'utils/data'
+import { getRandomNumbers, setUrlParmsByObject } from 'utils/data'
 
-export const fetchLocationsByPage = page => {
-  return axios(LOCATION_PAGINATION(page))
+export const fetchLocationsByPage = (page, filters) => {
+  return axios(LOCATION_PAGINATION(page) + setUrlParmsByObject(filters))
 }
 
 export const fetchMultipleLocations = items => {

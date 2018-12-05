@@ -19,6 +19,24 @@ import BaseComponent from 'utils/BaseComponent'
 import { fetchEpisodesByPage } from 'services/episodes'
 
 class EpisodesPage extends BaseComponent {
+  constructor() {
+    super()
+
+    this.filters = {
+      text: [
+        {
+          name: 'name',
+          placeholder: 'Name'
+        },
+        {
+          name: 'episode',
+          placeholder: 'Episode'
+        }
+      ],
+      select: []
+    }
+  }
+
   _renderEpisode(episode) {
     const { id, name } = episode
     return <EpisodeCard key={id + name} {...episode} />
@@ -33,6 +51,7 @@ class EpisodesPage extends BaseComponent {
           label={t('Episodes')}
           height="900px"
           renderItem={this._renderEpisode}
+          filters={this.filters}
         />
       </AppContainer>
     )

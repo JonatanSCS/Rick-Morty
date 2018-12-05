@@ -19,6 +19,46 @@ import BaseComponent from 'utils/BaseComponent'
 import { fetchCharactersByPage } from 'services/characters'
 
 class CharacterPage extends BaseComponent {
+  constructor() {
+    super()
+
+    this.filters = {
+      text: [
+        {
+          name: 'name',
+          placeholder: 'Name'
+        },
+        {
+          name: 'species',
+          placeholder: 'Species'
+        },
+        {
+          name: 'type',
+          placeholder: 'Type'
+        }
+      ],
+      select: [
+        {
+          placeholder: 'Status',
+          options: [
+            { value: 'alive', label: 'Alive', name: 'status' },
+            { value: 'dead', label: 'Dead', name: 'status' },
+            { value: 'unknow', label: 'unknow', name: 'status' }
+          ]
+        },
+        {
+          placeholder: 'Gender',
+          options: [
+            { value: 'female', label: 'Female', name: 'gender' },
+            { value: 'male', label: 'Male', name: 'gender' },
+            { value: 'genderless', label: 'Genderless', name: 'gender' },
+            { value: 'unknown', label: 'Unknown', name: 'gender' }
+          ]
+        }
+      ]
+    }
+  }
+
   _renderCharacter(character) {
     return <CharacterCard key={character.id + character.name} {...character} />
   }
@@ -30,8 +70,9 @@ class CharacterPage extends BaseComponent {
         <InfinitList
           service={fetchCharactersByPage}
           label={t('Characters')}
-          height="950px"
+          height="1050px"
           renderItem={this._renderCharacter}
+          filters={this.filters}
         />
       </AppContainer>
     )

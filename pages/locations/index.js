@@ -19,6 +19,28 @@ import BaseComponent from 'utils/BaseComponent'
 import { fetchLocationsByPage } from 'services/locations'
 
 class LocationPage extends BaseComponent {
+  constructor() {
+    super()
+
+    this.filters = {
+      text: [
+        {
+          name: 'name',
+          placeholder: 'Name'
+        },
+        {
+          name: 'type',
+          placeholder: 'Type'
+        },
+        {
+          name: 'dimension',
+          placeholder: 'Dimension'
+        }
+      ],
+      select: []
+    }
+  }
+
   _renderLocation(location) {
     return <LocationCard key={location.id + location.name} {...location} />
   }
@@ -32,6 +54,7 @@ class LocationPage extends BaseComponent {
           label={t('Locations')}
           height="900px"
           renderItem={this._renderLocation}
+          filters={this.filters}
         />
       </AppContainer>
     )

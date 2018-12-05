@@ -9,10 +9,10 @@ import {
 } from 'constants/index'
 
 // Utils
-import { getRandomNumbers } from 'utils/data'
+import { getRandomNumbers, setUrlParmsByObject } from 'utils/data'
 
-export const fetchCharactersByPage = page => {
-  return axios(CHARACTERS_PAGINATION(page))
+export const fetchCharactersByPage = (page, filters) => {
+  return axios(CHARACTERS_PAGINATION(page) + setUrlParmsByObject(filters))
 }
 
 export const fetchMultipleCharacters = items => {

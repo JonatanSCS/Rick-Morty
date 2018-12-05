@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+import componentListInfinity from 'components/Lists/Infinity/redux/reducer'
 import containerApp from 'containers/App/redux/reducer'
 import pageCharacterDetail from 'pages/character/redux/reducer'
 
@@ -10,6 +11,7 @@ import pageCharacterDetail from 'pages/character/redux/reducer'
  */
 export default function createReducer() {
   return combineReducers({
+    componentListInfinity,
     containerApp,
     pageCharacterDetail
   })

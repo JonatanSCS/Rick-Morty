@@ -5,7 +5,8 @@ export const initialState = {
   items: [],
   page: 1,
   max: null,
-  filters: {}
+  filters: {},
+  isLoading: true
 }
 
 /**
@@ -25,10 +26,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         items: _items,
         page: action.page,
-        max: action.max
+        max: action.max,
+        isLoading: false
       }
     case UPDATE_FILTER:
       return {
+        isLoading: true,
         items: [],
         page: 1,
         max: null,
@@ -43,6 +46,7 @@ export default function reducer(state = initialState, action) {
         items: [],
         page: 1,
         max: null,
+        isLoading: true,
         filters: action.filters
       }
     default:

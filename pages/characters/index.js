@@ -43,7 +43,8 @@ class CharacterPage extends BaseComponent {
           options: [
             { value: 'alive', label: 'Alive', name: 'status' },
             { value: 'dead', label: 'Dead', name: 'status' },
-            { value: 'unknow', label: 'unknow', name: 'status' }
+            { value: 'unknow', label: 'unknow', name: 'status' },
+            { value: '', label: 'All', name: 'status' }
           ]
         },
         {
@@ -52,7 +53,8 @@ class CharacterPage extends BaseComponent {
             { value: 'female', label: 'Female', name: 'gender' },
             { value: 'male', label: 'Male', name: 'gender' },
             { value: 'genderless', label: 'Genderless', name: 'gender' },
-            { value: 'unknown', label: 'Unknown', name: 'gender' }
+            { value: 'unknown', label: 'Unknown', name: 'gender' },
+            { value: '', label: 'All', name: 'gender' }
           ]
         }
       ]

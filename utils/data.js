@@ -16,8 +16,18 @@ export const setUrlParmsByObject = (params = {}) => {
 
   for (let key in params) {
     if (key) {
-      query = `${query}${key}=${params[key]}&`
+      query = `${query}${key}=${params[key]}`
     }
   }
   return query
+}
+
+export const getNameValue = e => {
+  let { name, value } = e
+  if (e.target) {
+    name = e.target.name
+    value = e.target.value
+  }
+
+  return { name, value }
 }

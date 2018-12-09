@@ -4,9 +4,12 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 import { connect } from 'react-redux'
+import { getNameValue } from 'utils/data'
+import qs from 'query-string'
 
 // Components
 import Select from 'react-select'
+import Router from 'next/router'
 
 // Redux
 import {
@@ -20,27 +23,18 @@ import styles from './styles.scss'
 class Filters extends BaseComponent {
   constructor() {
     super()
-    this.timeout = 0
-    this._bind(
-      '_renderTextField',
-      '_renderSelectField',
-      '_handleTextChange',
-      '_handleSelectChange'
-    )
+    this._bind('_renderTextField', '_renderSelectField', '_handleFilterChange')
   }
 
-  _handleTextChange(e) {
-    if (this.timeout) {
-      clearTimeout(this.timeout)
-    }
-    const { name, value } = e.target
-    this.timeout = setTimeout(() => {
-      this.props.updateField(name, value)
-    }, 300)
+  _handleFilterChange(element) {
+    const { name, value } = getNameValue(element)
+    this.props.updateField(name, value, this.props._filters)
   }
 
-  _handleSelectChange(option) {
-    this.props.updateField(option.name, option.value)
+  componentDidUpdate() {
+    const params = qs.stringify(this.props._filters)
+    const url = `/${this.props.path}?${params}`
+    Router.replace(url, url, { shallow: true })
   }
 
   _renderTextField(field) {
@@ -49,7 +43,8 @@ class Filters extends BaseComponent {
         className={styles.Input}
         key={field.name}
         name={field.name}
-        onChange={this._handleTextChange}
+        onChange={this._handleFilterChange}
+        value={this.props._filters[field.name] || ''}
         placeholder={field.placeholder}
         type="text"
       />
@@ -61,7 +56,7 @@ class Filters extends BaseComponent {
       <Select
         className={styles.Select}
         key={field.placeholder}
-        onChange={this._handleSelectChange}
+        onChange={this._handleFilterChange}
         options={field.options}
         placeholder={field.placeholder}
       />

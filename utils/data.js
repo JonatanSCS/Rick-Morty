@@ -21,3 +21,13 @@ export const setUrlParmsByObject = (params = {}) => {
   }
   return query
 }
+
+export const getNameValue = e => {
+  let { name, value } = e
+  if (e.target) {
+    name = e.target.name
+    value = e.target.value
+  }
+
+  return { name, value }
+}

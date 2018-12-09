@@ -55,6 +55,7 @@ class LocationPage extends BaseComponent {
           height="900px"
           renderItem={this._renderLocation}
           filters={this.filters}
+          path="locations"
         />
       </AppContainer>
     )

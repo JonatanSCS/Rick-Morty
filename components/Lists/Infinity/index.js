@@ -9,9 +9,10 @@ import Filters from './Filters'
 import BaseComponent from 'utils/BaseComponent'
 import { withRouter } from 'next/router'
 import { connect } from 'react-redux'
+import qs from 'query-string'
 
 // Redux
-import { fetchData } from './redux/actions'
+import { fetchData, updateFilters } from './redux/actions'
 
 // Styles
 import styles from './styles.scss'
@@ -23,14 +24,14 @@ class InfinitList extends BaseComponent {
   }
 
   componentDidMount() {
-    const { service } = this.props
-    this.props.fetchData(service, 1)
+    this.props.updateFilters(qs.parse(location.search))
   }
 
   componentDidUpdate(prevProps) {
     const { service, page, _filters } = this.props
+    const filters = qs.parse(location.search)
     if (_filters !== prevProps._filters) {
-      this.props.fetchData(service, page, this.props._filters)
+      this.props.fetchData(service, page, filters)
     }
   }
 
@@ -40,7 +41,7 @@ class InfinitList extends BaseComponent {
   }
 
   render() {
-    const { page, max, items, filters } = this.props
+    const { page, max, items, filters, path } = this.props
     return (
       <div
         className={styles.Page}
@@ -50,7 +51,7 @@ class InfinitList extends BaseComponent {
         }}
       >
         <h1>{this.props.label}</h1>
-        <Filters filters={filters} />
+        <Filters filters={filters} path={path} />
         <InfiniteScroll
           pageStart={1}
           className={styles.List}
@@ -78,7 +79,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchData: (service, page, filters) =>
-      fetchData(service, page, filters, dispatch)
+      fetchData(service, page, filters, dispatch),
+    updateFilters: filters => dispatch(updateFilters(filters))
   }
 }
 

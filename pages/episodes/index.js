@@ -52,6 +52,7 @@ class EpisodesPage extends BaseComponent {
           height="900px"
           renderItem={this._renderEpisode}
           filters={this.filters}
+          path="episodes"
         />
       </AppContainer>
     )

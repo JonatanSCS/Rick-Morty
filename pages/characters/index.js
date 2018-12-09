@@ -73,6 +73,7 @@ class CharacterPage extends BaseComponent {
           height="1050px"
           renderItem={this._renderCharacter}
           filters={this.filters}
+          path="characters"
         />
       </AppContainer>
     )

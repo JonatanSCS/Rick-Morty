@@ -29,9 +29,13 @@ export const updateFilters = filters => {
 }
 
 const getData = (service, page, filters, dispatch) => {
-  return service(page, filters).then(({ data }) => {
-    dispatch(updateItems(data.results, page, data.info.pages))
-  })
+  return service(page, filters)
+    .then(({ data }) => {
+      dispatch(updateItems(data.results, page, data.info.pages))
+    })
+    .catch(() => {
+      dispatch(updateItems([], 1, null))
+    })
 }
 
 const _searchData = debounce(getData, 500)

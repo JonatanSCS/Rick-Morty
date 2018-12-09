@@ -37,27 +37,7 @@ class CharacterPage extends BaseComponent {
           placeholder: 'Type'
         }
       ],
-      select: [
-        {
-          placeholder: 'Status',
-          options: [
-            { value: 'alive', label: 'Alive', name: 'status' },
-            { value: 'dead', label: 'Dead', name: 'status' },
-            { value: 'unknow', label: 'unknow', name: 'status' },
-            { value: '', label: 'All', name: 'status' }
-          ]
-        },
-        {
-          placeholder: 'Gender',
-          options: [
-            { value: 'female', label: 'Female', name: 'gender' },
-            { value: 'male', label: 'Male', name: 'gender' },
-            { value: 'genderless', label: 'Genderless', name: 'gender' },
-            { value: 'unknown', label: 'Unknown', name: 'gender' },
-            { value: '', label: 'All', name: 'gender' }
-          ]
-        }
-      ]
+      select: []
     }
   }
 
@@ -83,3 +63,25 @@ class CharacterPage extends BaseComponent {
 }
 
 export default withNamespaces()(withAlert(CharacterPage))
+
+// select: [
+//   {
+//     placeholder: 'Status',
+//     options: [
+//       { value: 'alive', label: 'Alive', name: 'status' },
+//       { value: 'dead', label: 'Dead', name: 'status' },
+//       { value: 'unknow', label: 'unknow', name: 'status' },
+//       { value: '', label: 'All', name: 'status' }
+//     ]
+//   },
+//   {
+//     placeholder: 'Gender',
+//     options: [
+//       { value: 'female', label: 'Female', name: 'gender' },
+//       { value: 'male', label: 'Male', name: 'gender' },
+//       { value: 'genderless', label: 'Genderless', name: 'gender' },
+//       { value: 'unknown', label: 'Unknown', name: 'gender' },
+//       { value: '', label: 'All', name: 'gender' }
+//     ]
+//   }
+// ]

@@ -131,7 +131,7 @@
     "wrap-iife": 2, // require immediate function invocation to be wrapped in parentheses (off by default)
     "yoda": 2, // require or disallow Yoda conditions
     "require-jsdoc": "error",
-    "max-lines": ["error", 100],
+    "max-lines": ["error", 120],
     //
     // Strict Mode
     //

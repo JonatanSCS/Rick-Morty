@@ -52,7 +52,7 @@ class CharacterPage extends BaseComponent {
         <InfinitList
           service={fetchCharactersByPage}
           label={t('Characters')}
-          height="1050px"
+          height="1000px"
           renderItem={this._renderCharacter}
           filters={this.filters}
           path="characters"

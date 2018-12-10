@@ -31,3 +31,10 @@ export const getNameValue = e => {
 
   return { name, value }
 }
+
+export const removeDuplicateCharacters = string => {
+  return string
+    .split('')
+    .filter((item, pos, self) => self.indexOf(item) === pos)
+    .join('')
+}

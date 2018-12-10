@@ -1,0 +1,16 @@
+@import 'styles/variables';
+
+.Content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.Button {
+  border-radius: 100px;
+  width: 10rem;
+  border: 0;
+  background: $focus-primary;
+  padding: .5rem 1rem;
+  margin: 1rem 0;
+}

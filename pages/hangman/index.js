@@ -11,13 +11,16 @@ import Letters from './Letters'
 // Containers
 import AppContainer from 'containers/App'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Services
 import { fetchMultipleCharacters } from 'services/characters'
 
 // Styles
 import styles from './styles.scss'
 
-export default class HangmanPage extends BaseComponent {
+class HangmanPage extends BaseComponent {
   constructor() {
     super()
 
@@ -45,6 +48,7 @@ export default class HangmanPage extends BaseComponent {
   }
 
   _renderContent() {
+    const { t } = this.props
     const { character, isLoading, success } = this.state
     const successClass = success ? 'success' : ''
     return isLoading ? (
@@ -55,7 +59,7 @@ export default class HangmanPage extends BaseComponent {
       <div className={`${styles.Content} ${successClass}`}>
         <Letters {...character} handleOther={this._fetchData} />
         <button className={styles.Button} onClick={this._fetchData}>
-          Other...
+          {`${t('Other')}...`}
         </button>
       </div>
     )
@@ -65,3 +69,5 @@ export default class HangmanPage extends BaseComponent {
     return <AppContainer>{this._renderContent()}</AppContainer>
   }
 }
+
+export default withNamespaces()(HangmanPage)
